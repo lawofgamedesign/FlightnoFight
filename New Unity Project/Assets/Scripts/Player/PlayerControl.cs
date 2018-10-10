@@ -33,9 +33,12 @@ public class PlayerControl : MonoBehaviour {
 
 
     /// <summary>
-    /// Move the main character toward the cursor. The character moves faster when the cursor is farther away.
+    /// Move the player ship along with the cursor, without jumping to the location of the cursor.
+    /// 
+    /// In this way, the player can provide input anywhere on the screen to move the ship, rather
+    /// than having to cover it.
     /// </summary>
-    /// <param name="e">A MousePosEvent with the mouse's current screen position.</param>
+    /// <param name="e">An InputEvent.</param>
     private void Move(global::Event e)
     {
         Debug.Assert(e.GetType() == typeof(InputEvent), "Non-InputEvent in Move()");

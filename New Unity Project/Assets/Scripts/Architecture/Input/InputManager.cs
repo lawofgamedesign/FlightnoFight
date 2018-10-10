@@ -13,6 +13,11 @@ public class InputManager {
     private Vector2 thisFramePos = new Vector2(0.0f, 0.0f);
 
 
+    ////////////////////////////////////////////////
+    /// Functions
+    ////////////////////////////////////////////////
+
+
     /// <summary>
     /// Each frame, if the player is giving an input, send out information PlayerControl needs to move the ship.
     /// </summary>
