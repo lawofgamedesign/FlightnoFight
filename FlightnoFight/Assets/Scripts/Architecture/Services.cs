@@ -40,5 +40,15 @@ public static class Services
         }
         set { level = value; }
     }
+
+
+    public static ScoreManager score;
+    public static ScoreManager Score {
+        get {
+            Debug.Assert(score != null, "No score manager. Are services being created out of order?");
+            return score;
+        }
+        set { score = value; }
+    }
 }
 

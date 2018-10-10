@@ -8,6 +8,10 @@ public class GameManager : MonoBehaviour {
     ////////////////////////////////////////////////
 
 
+    //is the game underway?
+    public bool Playing { get; set; }
+
+
     //player vehicle
     private const string PLAYER_OBJ = "Player";
 
@@ -28,7 +32,10 @@ public class GameManager : MonoBehaviour {
         Services.Environment = new EnvironmentManager();
         Services.Environment.Setup();
         Services.Level = new LevelManager();
+        Services.Score = new ScoreManager();
+        Services.Score.Setup();
         GameObject.Find(PLAYER_OBJ).GetComponent<PlayerControl>().Setup();
+        Playing = true;
     }
 
 
@@ -37,8 +44,10 @@ public class GameManager : MonoBehaviour {
     /// are called through here.
     /// </summary>
     private void Update(){
+        if (!Playing) return;
         Services.Inputs.Tick();
         Services.Environment.Tick();
         Services.Level.Tick();
+        Services.Score.Tick();
     }
 }

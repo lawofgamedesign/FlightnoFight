@@ -23,6 +23,10 @@ public class PlayerControl : MonoBehaviour {
     private const string DANGER_TAG = "Danger";
 
 
+    //access to the game manager
+    private const string MANAGER_OBJ = "Game manager";
+
+
     ////////////////////////////////////////////////
     /// Functions
     ////////////////////////////////////////////////
@@ -66,6 +70,9 @@ public class PlayerControl : MonoBehaviour {
     /// </summary>
     /// <param name="other">The object the player ran into.</param>
     private void OnTriggerEnter2D(Collider2D other){
-        if (other.tag == DANGER_TAG) gameObject.SetActive(false);
+        if (other.tag == DANGER_TAG){
+            gameObject.SetActive(false);
+            GameObject.Find(MANAGER_OBJ).GetComponent<GameManager>().Playing = false;
+        }
     }
 }
