@@ -12,12 +12,15 @@ public class PlayerControl : MonoBehaviour {
     private Vector3 screenMoveDir;
     private float moveMagnitude;
     private Vector3 totalScreenMove;
-    private float speed = 0.05f;
     private Vector3 characterScreenPos;
 
 
     //player's rigidbody
     private Rigidbody2D rb2D;
+
+
+    //things the player can run into
+    private const string DANGER_TAG = "Danger";
 
 
     ////////////////////////////////////////////////
@@ -55,5 +58,14 @@ public class PlayerControl : MonoBehaviour {
 
         //move in the same direction, and for the same distance, as the cursor
         rb2D.MovePosition(Camera.main.ScreenToWorldPoint(characterScreenPos + totalScreenMove));
+    }
+
+
+    /// <summary>
+    /// Handle collisions.
+    /// </summary>
+    /// <param name="other">The object the player ran into.</param>
+    private void OnTriggerEnter2D(Collider2D other){
+        if (other.tag == DANGER_TAG) gameObject.SetActive(false);
     }
 }

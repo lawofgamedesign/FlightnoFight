@@ -23,9 +23,17 @@ public class InputManager {
     /// </summary>
     public void Tick(){
         lastFramePos = thisFramePos;
-        thisFramePos = Input.mousePosition;
+        //thisFramePos = Input.mousePosition;
 
-        if (Input.GetMouseButton(0)){
+        //if (Input.GetMouseButton(0)){
+        //    Services.Events.Fire(new InputEvent(lastFramePos, thisFramePos));
+        //}
+
+        if (Input.touchCount > 0){
+            thisFramePos = Input.GetTouch(0).position;
+
+            if (Input.GetTouch(0).phase == TouchPhase.Began) lastFramePos = thisFramePos;
+            
             Services.Events.Fire(new InputEvent(lastFramePos, thisFramePos));
         }
     }

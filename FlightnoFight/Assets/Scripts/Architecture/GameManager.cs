@@ -25,6 +25,9 @@ public class GameManager : MonoBehaviour {
     private void Start(){
         Services.Events = new EventManager();
         Services.Inputs = new InputManager();
+        Services.Environment = new EnvironmentManager();
+        Services.Environment.Setup();
+        Services.Level = new LevelManager();
         GameObject.Find(PLAYER_OBJ).GetComponent<PlayerControl>().Setup();
     }
 
@@ -35,5 +38,7 @@ public class GameManager : MonoBehaviour {
     /// </summary>
     private void Update(){
         Services.Inputs.Tick();
+        Services.Environment.Tick();
+        Services.Level.Tick();
     }
 }

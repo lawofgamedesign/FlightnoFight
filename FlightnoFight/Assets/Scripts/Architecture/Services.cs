@@ -1,0 +1,44 @@
+﻿using UnityEngine;
+
+public static class Services
+{
+
+    private static EventManager events;
+    public static EventManager Events {
+        get{
+            Debug.Assert(events != null, "No event manager. Are services being created out of order?");
+            return events;
+        }
+        set { events = value; }
+    }
+
+    private static InputManager inputs;
+    public static InputManager Inputs {
+        get{
+            Debug.Assert(inputs != null, "No input manager. Are services being created out of order?");
+            return inputs;
+        }
+        set { inputs = value; }
+    }
+
+
+    private static EnvironmentManager environment;
+    public static EnvironmentManager Environment {
+        get {
+            Debug.Assert(environment != null, "No environment manager. Are services being created out of order?");
+            return environment;
+        }
+        set { environment = value; }
+    }
+
+
+    public static LevelManager level;
+    public static LevelManager Level {
+        get {
+            Debug.Assert(level != null, "No level manager. Are services being created out of order?");
+            return level;
+        }
+        set { level = value; }
+    }
+}
+
