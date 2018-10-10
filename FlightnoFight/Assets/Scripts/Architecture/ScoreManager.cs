@@ -23,6 +23,14 @@ public class ScoreManager {
     private float TIME_TO_INCREMENT = 1.0f;
 
 
+    //scoring regions
+    private const float FAST_ZONE = 1.0f;
+    private const float SLOW_ZONE = -1.0f;
+    private const int FAST_PROGRESS = 3;
+    private const int NORMAL_PROGRESS = 2;
+    private const int SLOW_PROGRESS = 1;
+
+
 
     ////////////////////////////////////////////////
     /// Functions
@@ -47,7 +55,9 @@ public class ScoreManager {
 
 
     private void IncreaseScore(){
-        currentScore++;
+        if (player.position.y > FAST_ZONE) currentScore += FAST_PROGRESS;
+        else if (player.position.y < SLOW_ZONE) currentScore += SLOW_PROGRESS;
+        else currentScore += NORMAL_PROGRESS;
 
         score.text = currentScore.ToString();
     }
