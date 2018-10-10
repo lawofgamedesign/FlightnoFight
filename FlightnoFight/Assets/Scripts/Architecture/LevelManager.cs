@@ -14,11 +14,15 @@ public class LevelManager {
     private float asteroidTimer = 0.0f;
 
 
+    //nonsense location for objects that handle their own placement
+    private Vector2 genericLoc = new Vector2(0.0f, 0.0f);
+
+
     public void Tick(){
         asteroidTimer += Time.deltaTime;
 
         if (asteroidTimer >= asteroidDelay){
-            Services.Environment.CreateSpaceObj<AsteroidBehavior>(ASTEROID_OBJ);
+            Services.Environment.CreateSpaceObj<AsteroidBehavior>(ASTEROID_OBJ, genericLoc);
             asteroidTimer = 0.0f;
         }
     }

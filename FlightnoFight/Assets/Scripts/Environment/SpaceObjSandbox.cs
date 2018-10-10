@@ -13,12 +13,16 @@ public abstract class SpaceObjSandbox : MonoBehaviour {
     protected Rigidbody2D rb2D;
 
 
+    //tag for objects that are dangerous to the player
+    protected const string DANGER_TAG = "Danger";
+
+
     ////////////////////////////////////////////////
     /// Functions
     ////////////////////////////////////////////////
 
 
-    public virtual void Setup(){
+    public virtual void Setup(Vector2 position){
         rb2D = GetComponent<Rigidbody2D>();
     }
 
