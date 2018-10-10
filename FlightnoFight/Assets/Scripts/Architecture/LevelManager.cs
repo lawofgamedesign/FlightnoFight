@@ -18,6 +18,9 @@ public class LevelManager {
     private Vector2 genericLoc = new Vector2(0.0f, 0.0f);
 
 
+    /// <summary>
+    /// Create asteroids over time.
+    /// </summary>
     public void Tick(){
         asteroidTimer += Time.deltaTime;
 

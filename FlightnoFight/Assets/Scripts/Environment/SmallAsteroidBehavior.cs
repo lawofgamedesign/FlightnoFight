@@ -15,9 +15,9 @@ public class SmallAsteroidBehavior : AsteroidBehavior {
     ////////////////////////////////////////////////
 
 
-    public override void Setup(Vector2 position)
-    {
-        Debug.Log("Small Asteroid Setup() called; position == " + position);
+    //initialize variables
+    //don't call base.Setup here! Doing so will make this behave like a large asteroid.
+    public override void Setup(Vector2 position){
         rb2D = GetComponent<Rigidbody2D>();
         speed = Random.Range(MIN_SPEED, MAX_SPEED);
         transform.position = position;
@@ -25,8 +25,11 @@ public class SmallAsteroidBehavior : AsteroidBehavior {
     }
 
 
-    protected override void OnTriggerEnter2D(Collider2D other)
-    {
+    /// <summary>
+    /// Handle collisions.
+    /// </summary>
+    /// <param name="other">The collider of the object with which this collided.</param>
+    protected override void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == DANGER_TAG)
         {
             if (other.name.Contains(ASTEROID))
