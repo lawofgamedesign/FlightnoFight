@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
@@ -14,6 +15,12 @@ public class GameManager : MonoBehaviour {
 
     //player vehicle
     private const string PLAYER_OBJ = "Player";
+
+
+    //restart process
+    private const float RESTART_DELAY = 1.5f;
+    private float restartTimer = 0.0f;
+    private const string TITLE_SCENE = "Title";
 
 
     ////////////////////////////////////////////////
@@ -44,10 +51,30 @@ public class GameManager : MonoBehaviour {
     /// are called through here.
     /// </summary>
     private void Update(){
-        if (!Playing) return;
+        if (Playing) Play();
+        else CountdownToRestart();
+
+       
+    }
+
+
+    /// <summary>
+    /// All actions that occur each frame of play.
+    /// </summary>
+    private void Play(){
         Services.Inputs.Tick();
         Services.Environment.Tick();
         Services.Level.Tick();
         Services.Score.Tick();
+    }
+
+
+    /// <summary>
+    /// All actions required to end the game.
+    /// </summary>
+    private void CountdownToRestart(){
+        restartTimer += Time.deltaTime;
+
+        if (restartTimer >= RESTART_DELAY) SceneManager.LoadScene(TITLE_SCENE);
     }
 }
