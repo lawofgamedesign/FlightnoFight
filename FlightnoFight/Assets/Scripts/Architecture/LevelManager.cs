@@ -10,7 +10,7 @@ public class LevelManager {
 
     //asteroids
     private const string ASTEROID_OBJ = "Asteroid";
-    private float asteroidDelay = 1.0f;
+    private float asteroidDelay = 0.25f;
     private float asteroidTimer = 0.0f;
 
 

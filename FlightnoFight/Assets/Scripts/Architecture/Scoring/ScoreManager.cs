@@ -24,8 +24,8 @@ public class ScoreManager {
 
 
     //scoring regions
-    private const float FAST_ZONE = 1.0f;
-    private const float SLOW_ZONE = -1.0f;
+    public const float FAST_ZONE = 1.0f;
+    public const float SLOW_ZONE = -1.0f;
     private const int FAST_PROGRESS = 3;
     private const int NORMAL_PROGRESS = 2;
     private const int SLOW_PROGRESS = 1;

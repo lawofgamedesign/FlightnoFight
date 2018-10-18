@@ -50,5 +50,15 @@ public static class Services
         }
         set { score = value; }
     }
+
+
+    public static SpeedManager speed;
+    public static SpeedManager Speed {
+        get {
+            Debug.Assert(speed != null, "No speed manager. Are services being created out of order?");
+            return speed;
+        }
+        set { speed = value; }
+    }
 }
 

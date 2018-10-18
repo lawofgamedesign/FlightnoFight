@@ -13,6 +13,7 @@ public class PlayerControl : MonoBehaviour {
     private float moveMagnitude;
     private Vector3 totalScreenMove;
     private Vector3 characterScreenPos;
+    private Vector3 newPos;
 
 
     //player's rigidbody
@@ -61,7 +62,10 @@ public class PlayerControl : MonoBehaviour {
 
 
         //move in the same direction, and for the same distance, as the cursor
-        rb2D.MovePosition(Camera.main.ScreenToWorldPoint(characterScreenPos + totalScreenMove));
+        //also send out a notification of the player's new position for, e.g., the speed readout
+        newPos = Camera.main.ScreenToWorldPoint(characterScreenPos + totalScreenMove);
+        rb2D.MovePosition(newPos);
+        Services.Events.Fire(new PositionEvent(transform, newPos));
     }
 
 

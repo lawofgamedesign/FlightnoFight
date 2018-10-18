@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour {
         Services.Score = new ScoreManager();
         Services.Score.Setup();
         GameObject.Find(PLAYER_OBJ).GetComponent<PlayerControl>().Setup();
+        Services.Speed = new SpeedManager();
+        Services.Speed.Setup();
 
         if (Application.isEditor) Services.Inputs = new EditorInputManager();
         else Services.Inputs = new InputManager();
