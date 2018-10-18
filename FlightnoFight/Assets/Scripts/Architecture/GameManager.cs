@@ -35,13 +35,16 @@ public class GameManager : MonoBehaviour {
     /// </summary>
     private void Start(){
         Services.Events = new EventManager();
-        Services.Inputs = new InputManager();
         Services.Environment = new EnvironmentManager();
         Services.Environment.Setup();
         Services.Level = new LevelManager();
         Services.Score = new ScoreManager();
         Services.Score.Setup();
         GameObject.Find(PLAYER_OBJ).GetComponent<PlayerControl>().Setup();
+
+        if (Application.isEditor) Services.Inputs = new EditorInputManager();
+        else Services.Inputs = new InputManager();
+
         Playing = true;
     }
 

@@ -9,8 +9,8 @@ public class InputManager {
 
 
     //tracking movement
-    private Vector2 lastFramePos = new Vector2(0.0f, 0.0f);
-    private Vector2 thisFramePos = new Vector2(0.0f, 0.0f);
+    protected Vector2 lastFramePos = new Vector2(0.0f, 0.0f);
+    protected Vector2 thisFramePos = new Vector2(0.0f, 0.0f);
 
 
     ////////////////////////////////////////////////
@@ -21,7 +21,7 @@ public class InputManager {
     /// <summary>
     /// Each frame, if the player is giving an input, send out information PlayerControl needs to move the ship.
     /// </summary>
-    public void Tick(){
+    public virtual void Tick(){
         lastFramePos = thisFramePos;
         //thisFramePos = Input.mousePosition;
 
